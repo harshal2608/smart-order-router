@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { ChainId, Token } from '@uniswap/sdk-core';
-import { Pair } from '@uniswap/v2-sdk';
+import { ChainId, Token } from '@vnaysn/jediswap-sdk-core';
+import { Pair } from '@vnaysn/jediswap-sdk-v2';
 import retry, { Options as RetryOptions } from 'async-retry';
 import _ from 'lodash';
 

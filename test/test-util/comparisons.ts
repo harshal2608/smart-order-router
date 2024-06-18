@@ -1,4 +1,4 @@
-import { Pool } from '@uniswap/v3-sdk';
+import { Pool } from '@vnaysn/jediswap-sdk-v3';
 import _ from 'lodash';
 
 export const poolEquals = (p1: Pool, p2: Pool) =>

@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core';
+import { ChainId } from '@vnaysn/jediswap-sdk-core';
 
 import {
   BatchParams,
@@ -14,9 +14,9 @@ export const NETWORKS_WITH_SAME_RETRY_OPTIONS = Object.values(
 export function constructSameRetryOptionsMap<T extends QuoteRetryOptions>(
   retryOptions: T,
   additionalNetworks: ChainId[] = []
-): { [chainId: number]: T } {
+): { [chainId: string]: T } {
   return NETWORKS_WITH_SAME_RETRY_OPTIONS.concat(additionalNetworks).reduce<{
-    [chainId: number]: T;
+    [chainId: string]: T;
   }>((memo, chainId) => {
     memo[chainId] = retryOptions;
     return memo;
@@ -40,9 +40,9 @@ export const NETWORKS_WITH_SAME_BATCH_PARAMS = Object.values(
 export function constructSameBatchParamsMap<T extends BatchParams>(
   batchParams: T,
   additionalNetworks: ChainId[] = []
-): { [chainId: number]: T } {
+): { [chainId: string]: T } {
   return NETWORKS_WITH_SAME_BATCH_PARAMS.concat(additionalNetworks).reduce<{
-    [chainId: number]: T;
+    [chainId: string]: T;
   }>((memo, chainId) => {
     memo[chainId] = batchParams;
     return memo;
@@ -68,11 +68,11 @@ export function constructSameGasErrorFailureOverridesMap<
 >(
   gasErrorFailureOverrides: T,
   additionalNetworks: ChainId[] = []
-): { [chainId: number]: T } {
+): { [chainId: string]: T } {
   return NETWORKS_WITH_SAME_GAS_ERROR_FAILURE_OVERRIDES.concat(
     additionalNetworks
   ).reduce<{
-    [chainId: number]: T;
+    [chainId: string]: T;
   }>((memo, chainId) => {
     memo[chainId] = gasErrorFailureOverrides;
     return memo;
@@ -99,11 +99,11 @@ export function constructSameSuccessRateFailureOverridesMap<
 >(
   successRateFailureOverrides: T,
   additionalNetworks: ChainId[] = []
-): { [chainId: number]: T } {
+): { [chainId: string]: T } {
   return NETWORKS_WITH_SAME_SUCCESS_RATE_FAILURE_OVERRIDES.concat(
     additionalNetworks
   ).reduce<{
-    [chainId: number]: T;
+    [chainId: string]: T;
   }>((memo, chainId) => {
     memo[chainId] = successRateFailureOverrides;
     return memo;
@@ -128,11 +128,11 @@ export const NETWORKS_WITH_SAME_BLOCK_NUMBER_CONFIGS = Object.values(
 export function constructSameBlockNumberConfigsMap<T extends BlockNumberConfig>(
   blockNumberConfigs: T,
   additionalNetworks: ChainId[] = []
-): { [chainId: number]: T } {
+): { [chainId: string]: T } {
   return NETWORKS_WITH_SAME_BLOCK_NUMBER_CONFIGS.concat(
     additionalNetworks
   ).reduce<{
-    [chainId: number]: T;
+    [chainId: string]: T;
   }>((memo, chainId) => {
     memo[chainId] = blockNumberConfigs;
     return memo;

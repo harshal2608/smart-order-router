@@ -1,5 +1,5 @@
-import { Pair } from '@uniswap/v2-sdk';
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@uniswap/v3-sdk';
+import { Pair } from '@vnaysn/jediswap-sdk-v2';
+import { encodeSqrtRatioX96, FeeAmount, Pool } from '@vnaysn/jediswap-sdk-v3';
 import {
   CurrencyAmount,
   DAI_MAINNET as DAI,

@@ -1,7 +1,7 @@
-import { partitionMixedRouteByProtocol } from '@uniswap/router-sdk';
-import { Currency, CurrencyAmount, Ether } from '@uniswap/sdk-core';
-import { Pair } from '@uniswap/v2-sdk';
-import { Pool } from '@uniswap/v3-sdk';
+import { partitionMixedRouteByProtocol } from '@vnaysn/jediswap-router-sdk';
+import { Currency, CurrencyAmount, Ether } from '@vnaysn/jediswap-sdk-core';
+import { Pair } from '@vnaysn/jediswap-sdk-v2';
+import { Pool } from '@vnaysn/jediswap-sdk-v3';
 import { BigNumber } from 'ethers';
 import _ from 'lodash';
 import {

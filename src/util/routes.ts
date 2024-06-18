@@ -1,7 +1,7 @@
-import { Protocol } from '@uniswap/router-sdk';
-import { Percent } from '@uniswap/sdk-core';
-import { Pair } from '@uniswap/v2-sdk';
-import { Pool } from '@uniswap/v3-sdk';
+import { Protocol } from '@vnaysn/jediswap-router-sdk';
+import { Percent } from '@vnaysn/jediswap-sdk-core';
+import { Pair } from '@vnaysn/jediswap-sdk-v2';
+import { Pool } from '@vnaysn/jediswap-sdk-v3';
 import _ from 'lodash';
 
 import { RouteWithValidQuote } from '../routers/alpha-router';

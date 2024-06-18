@@ -4,22 +4,22 @@ import {
   MixedRouteSDK,
   Protocol,
   Trade,
-} from '@uniswap/router-sdk';
+} from '@vnaysn/jediswap-router-sdk';
 import {
   Currency,
   Fraction,
   Percent,
   Token,
   TradeType,
-} from '@uniswap/sdk-core';
-import { SwapOptions as UniversalRouterSwapOptions } from '@uniswap/universal-router-sdk';
-import { Route as V2RouteRaw } from '@uniswap/v2-sdk';
+} from '@vnaysn/jediswap-sdk-core';
+import { SwapOptions as UniversalRouterSwapOptions } from '@vnaysn/jediswap-universal-router-sdk';
+import { Route as V2RouteRaw } from '@vnaysn/jediswap-sdk-v2';
 import {
   MethodParameters as SDKMethodParameters,
   Pool,
   Position,
   Route as V3RouteRaw,
-} from '@uniswap/v3-sdk';
+} from '@vnaysn/jediswap-sdk-v3';
 
 import { SimulationStatus } from '../providers';
 import { CurrencyAmount } from '../util/amounts';

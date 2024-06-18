@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { ZERO } from '@uniswap/router-sdk';
-import { Fraction, TradeType } from '@uniswap/sdk-core';
+import { ZERO } from '@vnaysn/jediswap-router-sdk';
+import { Fraction, TradeType } from '@vnaysn/jediswap-sdk-core';
 
 import {
   RouteWithValidQuote,

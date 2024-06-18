@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { ChainId, Token } from '@uniswap/sdk-core';
-import { TokenInfo, TokenList } from '@uniswap/token-lists';
+import { ChainId, Token } from '@vnaysn/jediswap-sdk-core';
+import { TokenInfo, TokenList } from '@jediswap/token-lists';
 import axios from 'axios';
 
 import { log } from '../util/log';
@@ -55,7 +55,7 @@ export class CachingTokenListProvider
    * @param tokenCache Cache instance to hold cached tokens.
    */
   constructor(
-    chainId: ChainId | number,
+    chainId: ChainId ,
     tokenList: TokenList,
     private tokenCache: ICache<Token>
   ) {
@@ -67,7 +67,7 @@ export class CachingTokenListProvider
     this.chainAddressToTokenInfo = new Map();
 
     for (const tokenInfo of this.tokenList.tokens) {
-      const chainId = tokenInfo.chainId;
+      const chainId = tokenInfo.chainId as  ChainId;
       const chainIdString = chainId.toString();
       const symbol = tokenInfo.symbol;
       const address = tokenInfo.address.toLowerCase();
@@ -89,7 +89,7 @@ export class CachingTokenListProvider
   }
 
   public static async fromTokenListURI(
-    chainId: ChainId | number,
+    chainId: ChainId,
     tokenListURI: string,
     tokenCache: ICache<Token>
   ) {
@@ -127,7 +127,7 @@ export class CachingTokenListProvider
   }
 
   public static async fromTokenList(
-    chainId: ChainId | number,
+    chainId: ChainId ,
     tokenList: TokenList,
     tokenCache: ICache<Token>
   ) {

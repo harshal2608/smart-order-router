@@ -1,4 +1,4 @@
-import { Fraction } from '@uniswap/sdk-core';
+import { Fraction } from '@vnaysn/jediswap-sdk-core';
 
 import { CurrencyAmount } from '../../../util/amounts';
 

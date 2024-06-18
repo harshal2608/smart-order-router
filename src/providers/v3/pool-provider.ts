@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { ChainId, Token } from '@uniswap/sdk-core';
-import { computePoolAddress, FeeAmount, Pool } from '@uniswap/v3-sdk';
+import { ChainId, Token } from '@vnaysn/jediswap-sdk-core';
+import { computePoolAddress, FeeAmount, Pool } from '@vnaysn/jediswap-sdk-v3';
 import retry, { Options as RetryOptions } from 'async-retry';
 import _ from 'lodash';
 
@@ -230,7 +230,7 @@ export class V3PoolProvider implements IV3PoolProvider {
       tokenB: token1,
       fee: feeAmount,
       initCodeHashManualOverride: undefined,
-      chainId: this.chainId,
+      // chainId: this.chainId,
     });
 
     this.POOL_ADDRESS_CACHE[cacheKey] = poolAddress;

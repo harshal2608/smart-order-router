@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { ChainId, Price } from '@uniswap/sdk-core';
-import { Pool } from '@uniswap/v3-sdk';
+import { ChainId, Price } from '@vnaysn/jediswap-sdk-core';
+import { Pool } from '@vnaysn/jediswap-sdk-v3';
 import _ from 'lodash';
 
 import { WRAPPED_NATIVE_CURRENCY } from '../../../..';

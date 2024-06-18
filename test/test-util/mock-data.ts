@@ -1,8 +1,8 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { ChainId, Currency, Ether, Token } from '@uniswap/sdk-core';
-import { TokenList } from '@uniswap/token-lists';
-import { Pair } from '@uniswap/v2-sdk';
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@uniswap/v3-sdk';
+import { ChainId, Currency, Ether, Token } from '@vnaysn/jediswap-sdk-core';
+import { TokenList } from '@jediswap/token-lists';
+import { Pair } from '@vnaysn/jediswap-sdk-v2';
+import { encodeSqrtRatioX96, FeeAmount, Pool } from '@vnaysn/jediswap-sdk-v3';
 import _ from 'lodash';
 import {
   AlphaRouterConfig,

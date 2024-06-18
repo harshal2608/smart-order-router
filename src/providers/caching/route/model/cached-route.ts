@@ -1,6 +1,6 @@
-import { Protocol } from '@uniswap/router-sdk';
-import { Token } from '@uniswap/sdk-core';
-import { Pool } from '@uniswap/v3-sdk';
+import { Protocol } from '@vnaysn/jediswap-router-sdk';
+import { Token } from '@vnaysn/jediswap-sdk-core';
+import { Pool } from '@vnaysn/jediswap-sdk-v3';
 
 import { MixedRoute, V2Route, V3Route } from '../../../../routers';
 

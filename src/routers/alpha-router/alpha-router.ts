@@ -1,16 +1,16 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers';
-import DEFAULT_TOKEN_LIST from '@uniswap/default-token-list';
-import { Protocol, SwapRouter, Trade, ZERO } from '@uniswap/router-sdk';
+import DEFAULT_TOKEN_LIST from '@harshalmaniya/jediswap-default-token-list';
+import { Protocol, SwapRouter, Trade, ZERO } from '@vnaysn/jediswap-router-sdk';
 import {
   ChainId,
   Currency,
   Fraction,
   Token,
   TradeType,
-} from '@uniswap/sdk-core';
-import { TokenList } from '@uniswap/token-lists';
-import { Pool, Position, SqrtPriceMath, TickMath } from '@uniswap/v3-sdk';
+} from '@vnaysn/jediswap-sdk-core';
+import { TokenList } from '@jediswap/token-lists';
+import { Pool, Position, SqrtPriceMath, TickMath } from '@vnaysn/jediswap-sdk-v3';
 import retry from 'async-retry';
 import JSBI from 'jsbi';
 import _ from 'lodash';
@@ -514,177 +514,177 @@ export class AlphaRouter
       this.onChainQuoteProvider = onChainQuoteProvider;
     } else {
       switch (chainId) {
-        case ChainId.OPTIMISM:
-        case ChainId.OPTIMISM_GOERLI:
-        case ChainId.OPTIMISM_SEPOLIA:
-          this.onChainQuoteProvider = new OnChainQuoteProvider(
-            chainId,
-            provider,
-            this.multicall2Provider,
-            {
-              retries: 2,
-              minTimeout: 100,
-              maxTimeout: 1000,
-            },
-            (_) => {
-              return {
-                multicallChunk: 110,
-                gasLimitPerCall: 1_200_000,
-                quoteMinSuccessRate: 0.1,
-              }
-            },
-            {
-              gasLimitOverride: 3_000_000,
-              multicallChunk: 45,
-            },
-            {
-              gasLimitOverride: 3_000_000,
-              multicallChunk: 45,
-            },
-            {
-              baseBlockOffset: -10,
-              rollback: {
-                enabled: true,
-                attemptsBeforeRollback: 1,
-                rollbackBlockOffset: -10,
-              },
-            }
-          );
-          break;
-        case ChainId.BASE:
-        case ChainId.BLAST:
-        case ChainId.ZORA:
-        case ChainId.BASE_GOERLI:
-          this.onChainQuoteProvider = new OnChainQuoteProvider(
-            chainId,
-            provider,
-            this.multicall2Provider,
-            {
-              retries: 2,
-              minTimeout: 100,
-              maxTimeout: 1000,
-            },
-            (_) => {
-              return {
-                multicallChunk: 80,
-                gasLimitPerCall: 1_200_000,
-                quoteMinSuccessRate: 0.1,
-              }
-            },
-            {
-              gasLimitOverride: 3_000_000,
-              multicallChunk: 45,
-            },
-            {
-              gasLimitOverride: 3_000_000,
-              multicallChunk: 45,
-            },
-            {
-              baseBlockOffset: -10,
-              rollback: {
-                enabled: true,
-                attemptsBeforeRollback: 1,
-                rollbackBlockOffset: -10,
-              },
-            }
-          );
-          break;
-        case ChainId.ZKSYNC:
-          this.onChainQuoteProvider = new OnChainQuoteProvider(
-            chainId,
-            provider,
-            this.multicall2Provider,
-            {
-              retries: 2,
-              minTimeout: 100,
-              maxTimeout: 1000,
-            },
-            (_) => {
-              return {
-                multicallChunk: 27,
-                gasLimitPerCall: 3_000_000,
-                quoteMinSuccessRate: 0.1,
-              }
-            },
-            {
-              gasLimitOverride: 6_000_000,
-              multicallChunk: 13,
-            },
-            {
-              gasLimitOverride: 6_000_000,
-              multicallChunk: 13,
-            },
-            {
-              baseBlockOffset: -10,
-              rollback: {
-                enabled: true,
-                attemptsBeforeRollback: 1,
-                rollbackBlockOffset: -10,
-              },
-            }
-          );
-          break;
-        case ChainId.ARBITRUM_ONE:
-        case ChainId.ARBITRUM_GOERLI:
-        case ChainId.ARBITRUM_SEPOLIA:
-          this.onChainQuoteProvider = new OnChainQuoteProvider(
-            chainId,
-            provider,
-            this.multicall2Provider,
-            {
-              retries: 2,
-              minTimeout: 100,
-              maxTimeout: 1000,
-            },
-            (_) => {
-              return {
-                multicallChunk: 10,
-                gasLimitPerCall: 12_000_000,
-                quoteMinSuccessRate: 0.1,
-              }
-            },
-            {
-              gasLimitOverride: 30_000_000,
-              multicallChunk: 6,
-            },
-            {
-              gasLimitOverride: 30_000_000,
-              multicallChunk: 6,
-            }
-          );
-          break;
-        case ChainId.CELO:
-        case ChainId.CELO_ALFAJORES:
-          this.onChainQuoteProvider = new OnChainQuoteProvider(
-            chainId,
-            provider,
-            this.multicall2Provider,
-            {
-              retries: 2,
-              minTimeout: 100,
-              maxTimeout: 1000,
-            },
-            (_) => {
-              return {
-                multicallChunk: 10,
-                gasLimitPerCall: 5_000_000,
-                quoteMinSuccessRate: 0.1,
-              }
-            },
-            {
-              gasLimitOverride: 5_000_000,
-              multicallChunk: 5,
-            },
-            {
-              gasLimitOverride: 6_250_000,
-              multicallChunk: 4,
-            }
-          );
-          break;
-        case ChainId.POLYGON_MUMBAI:
-        case ChainId.SEPOLIA:
+        // case ChainId.OPTIMISM:
+        // case ChainId.OPTIMISM_GOERLI:
+        // case ChainId.OPTIMISM_SEPOLIA:
+        //   this.onChainQuoteProvider = new OnChainQuoteProvider(
+        //     chainId,
+        //     provider,
+        //     this.multicall2Provider,
+        //     {
+        //       retries: 2,
+        //       minTimeout: 100,
+        //       maxTimeout: 1000,
+        //     },
+        //     (_) => {
+        //       return {
+        //         multicallChunk: 110,
+        //         gasLimitPerCall: 1_200_000,
+        //         quoteMinSuccessRate: 0.1,
+        //       }
+        //     },
+        //     {
+        //       gasLimitOverride: 3_000_000,
+        //       multicallChunk: 45,
+        //     },
+        //     {
+        //       gasLimitOverride: 3_000_000,
+        //       multicallChunk: 45,
+        //     },
+        //     {
+        //       baseBlockOffset: -10,
+        //       rollback: {
+        //         enabled: true,
+        //         attemptsBeforeRollback: 1,
+        //         rollbackBlockOffset: -10,
+        //       },
+        //     }
+        //   );
+        //   break;
+        // case ChainId.BASE:
+        // case ChainId.BLAST:
+        // case ChainId.ZORA:
+        // case ChainId.BASE_GOERLI:
+        //   this.onChainQuoteProvider = new OnChainQuoteProvider(
+        //     chainId,
+        //     provider,
+        //     this.multicall2Provider,
+        //     {
+        //       retries: 2,
+        //       minTimeout: 100,
+        //       maxTimeout: 1000,
+        //     },
+        //     (_) => {
+        //       return {
+        //         multicallChunk: 80,
+        //         gasLimitPerCall: 1_200_000,
+        //         quoteMinSuccessRate: 0.1,
+        //       }
+        //     },
+        //     {
+        //       gasLimitOverride: 3_000_000,
+        //       multicallChunk: 45,
+        //     },
+        //     {
+        //       gasLimitOverride: 3_000_000,
+        //       multicallChunk: 45,
+        //     },
+        //     {
+        //       baseBlockOffset: -10,
+        //       rollback: {
+        //         enabled: true,
+        //         attemptsBeforeRollback: 1,
+        //         rollbackBlockOffset: -10,
+        //       },
+        //     }
+        //   );
+        //   break;
+        // case ChainId.ZKSYNC:
+        //   this.onChainQuoteProvider = new OnChainQuoteProvider(
+        //     chainId,
+        //     provider,
+        //     this.multicall2Provider,
+        //     {
+        //       retries: 2,
+        //       minTimeout: 100,
+        //       maxTimeout: 1000,
+        //     },
+        //     (_) => {
+        //       return {
+        //         multicallChunk: 27,
+        //         gasLimitPerCall: 3_000_000,
+        //         quoteMinSuccessRate: 0.1,
+        //       }
+        //     },
+        //     {
+        //       gasLimitOverride: 6_000_000,
+        //       multicallChunk: 13,
+        //     },
+        //     {
+        //       gasLimitOverride: 6_000_000,
+        //       multicallChunk: 13,
+        //     },
+        //     {
+        //       baseBlockOffset: -10,
+        //       rollback: {
+        //         enabled: true,
+        //         attemptsBeforeRollback: 1,
+        //         rollbackBlockOffset: -10,
+        //       },
+        //     }
+        //   );
+        //   break;
+        // case ChainId.ARBITRUM_ONE:
+        // case ChainId.ARBITRUM_GOERLI:
+        // case ChainId.ARBITRUM_SEPOLIA:
+        //   this.onChainQuoteProvider = new OnChainQuoteProvider(
+        //     chainId,
+        //     provider,
+        //     this.multicall2Provider,
+        //     {
+        //       retries: 2,
+        //       minTimeout: 100,
+        //       maxTimeout: 1000,
+        //     },
+        //     (_) => {
+        //       return {
+        //         multicallChunk: 10,
+        //         gasLimitPerCall: 12_000_000,
+        //         quoteMinSuccessRate: 0.1,
+        //       }
+        //     },
+        //     {
+        //       gasLimitOverride: 30_000_000,
+        //       multicallChunk: 6,
+        //     },
+        //     {
+        //       gasLimitOverride: 30_000_000,
+        //       multicallChunk: 6,
+        //     }
+        //   );
+        //   break;
+        // case ChainId.CELO:
+        // case ChainId.CELO_ALFAJORES:
+        //   this.onChainQuoteProvider = new OnChainQuoteProvider(
+        //     chainId,
+        //     provider,
+        //     this.multicall2Provider,
+        //     {
+        //       retries: 2,
+        //       minTimeout: 100,
+        //       maxTimeout: 1000,
+        //     },
+        //     (_) => {
+        //       return {
+        //         multicallChunk: 10,
+        //         gasLimitPerCall: 5_000_000,
+        //         quoteMinSuccessRate: 0.1,
+        //       }
+        //     },
+        //     {
+        //       gasLimitOverride: 5_000_000,
+        //       multicallChunk: 5,
+        //     },
+        //     {
+        //       gasLimitOverride: 6_250_000,
+        //       multicallChunk: 4,
+        //     }
+        //   );
+        //   break;
+        // case ChainId.POLYGON_MUMBAI:
+        // case ChainId.SEPOLIA:
         case ChainId.MAINNET:
-        case ChainId.POLYGON:
+        // case ChainId.POLYGON:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
             chainId,
             provider,
@@ -836,14 +836,14 @@ export class AlphaRouter
       swapRouterProvider ??
       new SwapRouterProvider(this.multicall2Provider, this.chainId);
 
-    if (
-      chainId === ChainId.ARBITRUM_ONE ||
-      chainId === ChainId.ARBITRUM_GOERLI
-    ) {
-      this.l2GasDataProvider =
-        arbitrumGasDataProvider ??
-        new ArbitrumGasDataProvider(chainId, this.provider);
-    }
+    // if (
+    //   chainId === ChainId.ARBITRUM_ONE ||
+    //   chainId === ChainId.ARBITRUM_GOERLI
+    // ) {
+    //   this.l2GasDataProvider =
+    //     arbitrumGasDataProvider ??
+    //     new ArbitrumGasDataProvider(chainId, this.provider);
+    // }
 
     // Initialize the Quoters.
     // Quoters are an abstraction encapsulating the business logic of fetching routes and quotes.

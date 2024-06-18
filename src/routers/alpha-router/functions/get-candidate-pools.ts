@@ -1,6 +1,6 @@
-import { Protocol } from '@uniswap/router-sdk';
-import { ChainId, Token, TradeType } from '@uniswap/sdk-core';
-import { FeeAmount } from '@uniswap/v3-sdk';
+import { Protocol } from '@vnaysn/jediswap-router-sdk';
+import { ChainId, Token, TradeType } from '@vnaysn/jediswap-sdk-core';
+import { FeeAmount } from '@vnaysn/jediswap-sdk-v3';
 import _ from 'lodash';
 
 import {

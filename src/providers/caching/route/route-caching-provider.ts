@@ -4,14 +4,14 @@
  * @export
  * @interface IRouteCachingProvider
  */
-import { Protocol } from '@uniswap/router-sdk';
+import { Protocol } from '@vnaysn/jediswap-router-sdk';
 import {
   ChainId,
   Currency,
   CurrencyAmount,
   Token,
   TradeType,
-} from '@uniswap/sdk-core';
+} from '@vnaysn/jediswap-sdk-core';
 
 import { CacheMode } from './model';
 import { CachedRoutes } from './model/cached-routes';
@@ -35,7 +35,7 @@ export abstract class IRouteCachingProvider {
    */
   public readonly getCachedRoute = async (
     // Defined as a readonly member instead of a regular function to make it final.
-    chainId: number,
+    chainId: string,
     amount: CurrencyAmount<Currency>,
     quoteToken: Token,
     tradeType: TradeType,

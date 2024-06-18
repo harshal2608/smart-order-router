@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { Protocol } from '@uniswap/router-sdk';
-import { ChainId, TradeType } from '@uniswap/sdk-core';
+import { Protocol } from '@vnaysn/jediswap-router-sdk';
+import { ChainId, TradeType } from '@vnaysn/jediswap-sdk-core';
 import {
   DAI_MAINNET,
   USDC_MAINNET,

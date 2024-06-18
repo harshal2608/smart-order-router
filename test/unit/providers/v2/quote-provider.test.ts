@@ -1,5 +1,5 @@
-import { ChainId, CurrencyAmount, Fraction, Token } from '@uniswap/sdk-core';
-import { Pair } from '@uniswap/v2-sdk';
+import { ChainId, CurrencyAmount, Fraction, Token } from '@vnaysn/jediswap-sdk-core';
+import { Pair } from '@vnaysn/jediswap-sdk-v2';
 import { BigNumber } from 'ethers';
 import JSBI from 'jsbi';
 import { V2QuoteProvider, V2Route, WETH9 } from '../../../../src';

@@ -41,7 +41,7 @@ export abstract class IMetric {
 }
 
 interface MetricContext {
-  chainId: number;
+  chainId: string;
   networkName: string;
 }
 
