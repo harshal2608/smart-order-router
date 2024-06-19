@@ -32,8 +32,8 @@ export const routeToString = (
             pool.token0,
             pool.token1,
             pool.fee,
-            undefined,
-            V3_CORE_FACTORY_ADDRESSES[pool.chainId]
+            // undefined,
+            // V3_CORE_FACTORY_ADDRESSES[pool.chainId]
           )}]`
         : ` -- [${Pair.getAddress(
             (pool as Pair).token0,

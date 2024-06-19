@@ -1,10 +1,13 @@
 import {
   ChainId,
+  Currency,
   // Currency,
   // Ether,
   NativeCurrency,
-  Token
+  Token,
 } from '@vnaysn/jediswap-sdk-core';
+import { WETH9 } from './addresses';
+import invariant from 'tiny-invariant'
 
 // WIP: Gnosis, Moonbeam
 export const SUPPORTED_CHAINS: ChainId[] = [
@@ -18,6 +21,8 @@ export const V2_SUPPORTED = [
 ];
 
 export const HAS_L1_FEE = [
+  ChainId.GOERLI,
+  ChainId.MAINNET
   // ChainId.OPTIMISM,
   // ChainId.OPTIMISM_GOERLI,
   // ChainId.OPTIMISM_SEPOLIA,
@@ -335,28 +340,51 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
 //   }
 // }
 
-// export class ExtendedEther extends Ether {
-//   public get wrapped(): Token {
-//     if (this.chainId in WRAPPED_NATIVE_CURRENCY) {
-//       return WRAPPED_NATIVE_CURRENCY[this.chainId as ChainId];
-//     }
-//     throw new Error('Unsupported chain ID');
-//   }
+export class Ether extends NativeCurrency {
+  protected constructor(chainId: ChainId) {
+    super(chainId, 18, 'ETH', 'Ether')
+  }
 
-//   private static _cachedExtendedEther: { [chainId: string]: NativeCurrency } =
-//     {};
+  public get wrapped(): Token {
+    const weth9 = WETH9[this.chainId]
+    invariant(!!weth9, 'WRAPPED')
+    return weth9
+  }
 
-//   public static onChain(chainId: string): ExtendedEther {
-//     return (
-//       this._cachedExtendedEther[chainId] ??
-//       (this._cachedExtendedEther[chainId] = new ExtendedEther(chainId))
-//     );
-//   }
-// }
+  private static _etherCache: { [chainId: string]: Ether } = {}
+
+  public static onChain(chainId: ChainId): Ether {
+    return this._etherCache[chainId] ?? (this._etherCache[chainId] = new Ether(chainId))
+  }
+
+  public equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId
+  }
+}
+
+
+export class ExtendedEther extends Ether {
+  public get wrapped(): Token {
+    if (this.chainId in WRAPPED_NATIVE_CURRENCY) {
+      return WRAPPED_NATIVE_CURRENCY[this.chainId as ChainId];
+    }
+    throw new Error('Unsupported chain ID');
+  }
+
+  private static _cachedExtendedEther: { [chainId: string]: NativeCurrency } =
+    {};
+
+  public static onChain(chainId: ChainId): ExtendedEther {
+    return (
+      this._cachedExtendedEther[chainId] ??
+      (this._cachedExtendedEther[chainId] = new ExtendedEther(chainId))
+    );
+  }
+}
 
 const cachedNativeCurrency: { [chainId: string]: NativeCurrency } = {};
 
-export function nativeOnChain(chainId: string): NativeCurrency {
+export function nativeOnChain(chainId: ChainId): NativeCurrency {
   if (cachedNativeCurrency[chainId] != undefined) {
     return cachedNativeCurrency[chainId]!;
   }

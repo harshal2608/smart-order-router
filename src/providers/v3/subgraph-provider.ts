@@ -48,27 +48,27 @@ export const printV2SubgraphPool = (s: V2SubgraphPool) =>
 const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
   [ChainId.MAINNET]:
     'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
-  [ChainId.OPTIMISM]:
-    'https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis',
-  // todo: add once subgraph is live
-  [ChainId.OPTIMISM_SEPOLIA]: '',
-  [ChainId.ARBITRUM_ONE]:
-    'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
-  // todo: add once subgraph is live
-  [ChainId.ARBITRUM_SEPOLIA]: '',
-  [ChainId.POLYGON]:
-    'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
-  [ChainId.CELO]:
-    'https://api.thegraph.com/subgraphs/name/jesse-sawa/uniswap-celo',
+  // [ChainId.OPTIMISM]:
+  //   'https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis',
+  // // todo: add once subgraph is live
+  // [ChainId.OPTIMISM_SEPOLIA]: '',
+  // [ChainId.ARBITRUM_ONE]:
+  //   'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
+  // // todo: add once subgraph is live
+  // [ChainId.ARBITRUM_SEPOLIA]: '',
+  // [ChainId.POLYGON]:
+  //   'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
+  // [ChainId.CELO]:
+  //   'https://api.thegraph.com/subgraphs/name/jesse-sawa/uniswap-celo',
   [ChainId.GOERLI]:
     'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-gorli',
-  [ChainId.BNB]:
-    'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain',
-  [ChainId.AVALANCHE]:
-    'https://api.thegraph.com/subgraphs/name/lynnshaoyu/uniswap-v3-avax',
-  [ChainId.BASE]:
-    'https://api.studio.thegraph.com/query/48211/uniswap-v3-base/version/latest',
-  [ChainId.BLAST]: 'https://gateway-arbitrum.network.thegraph.com/api/0ae45f0bf40ae2e73119b44ccd755967/subgraphs/id/2LHovKznvo8YmKC9ZprPjsYAZDCc4K5q4AYz8s3cnQn1',
+  // [ChainId.BNB]:
+  //   'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain',
+  // [ChainId.AVALANCHE]:
+  //   'https://api.thegraph.com/subgraphs/name/lynnshaoyu/uniswap-v3-avax',
+  // [ChainId.BASE]:
+  //   'https://api.studio.thegraph.com/query/48211/uniswap-v3-base/version/latest',
+  // [ChainId.BLAST]: 'https://gateway-arbitrum.network.thegraph.com/api/0ae45f0bf40ae2e73119b44ccd755967/subgraphs/id/2LHovKznvo8YmKC9ZprPjsYAZDCc4K5q4AYz8s3cnQn1',
 };
 
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.

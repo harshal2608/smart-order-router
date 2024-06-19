@@ -241,12 +241,12 @@ export function getL2ToL1GasUsed(
   chainId: ChainId
 ): BigNumber {
   switch (chainId) {
-    case ChainId.ARBITRUM_ONE:
-    case ChainId.ARBITRUM_GOERLI: {
-      // calculates bytes of compressed calldata
-      const l1ByteUsed = getArbitrumBytes(data);
-      return l1ByteUsed.mul(16);
-    }
+    // case ChainId.ARBITRUM_ONE:
+    // case ChainId.ARBITRUM_GOERLI: {
+    //   // calculates bytes of compressed calldata
+    //   const l1ByteUsed = getArbitrumBytes(data);
+    //   return l1ByteUsed.mul(16);
+    // }
     default:
       return BigNumber.from(0);
   }
@@ -540,20 +540,20 @@ export const calculateL1GasFeesHelper = async (
   let mainnetGasUsed = BigNumber.from(0);
   let mainnetFeeInWei = BigNumber.from(0);
   let gasUsedL1OnL2 = BigNumber.from(0);
-  if (opStackChains.includes(chainId)) {
-    [mainnetGasUsed, mainnetFeeInWei] = await calculateOptimismToL1SecurityFee(route, swapOptions, chainId, provider);
-  } else if (
-    chainId == ChainId.ARBITRUM_ONE ||
-    chainId == ChainId.ARBITRUM_GOERLI
-  ) {
-    [mainnetGasUsed, mainnetFeeInWei, gasUsedL1OnL2] =
-      calculateArbitrumToL1SecurityFee(
-        route,
-        swapOptions,
-        l2GasData as ArbitrumGasData,
-        chainId
-      );
-  }
+  // if (opStackChains.includes(chainId)) {
+  //   [mainnetGasUsed, mainnetFeeInWei] = await calculateOptimismToL1SecurityFee(route, swapOptions, chainId, provider);
+  // } else if (
+  //   chainId == ChainId.ARBITRUM_ONE ||
+  //   chainId == ChainId.ARBITRUM_GOERLI
+  // ) {
+  //   [mainnetGasUsed, mainnetFeeInWei, gasUsedL1OnL2] =
+  //     calculateArbitrumToL1SecurityFee(
+  //       route,
+  //       swapOptions,
+  //       l2GasData as ArbitrumGasData,
+  //       chainId
+  //     );
+  // }
 
   // wrap fee to native currency
   const nativeCurrency = WRAPPED_NATIVE_CURRENCY[chainId];
